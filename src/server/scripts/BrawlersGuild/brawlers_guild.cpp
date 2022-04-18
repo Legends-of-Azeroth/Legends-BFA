@@ -1,3 +1,20 @@
+/*
+ * Copyright (C) 2022 Legends-of-Azeroth
+ *
+ * This program is free software; you can redistribute it and/or modify it
+ * under the terms of the GNU General Public License as published by the
+ * Free Software Foundation; either version 2 of the License, or (at your
+ * option) any later version.
+ *
+ * This program is distributed in the hope that it will be useful, but WITHOUT
+ * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
+ * FITNESS FOR A PARTICULAR PURPOSE. See the GNU General Public License for
+ * more details.
+ *
+ * You should have received a copy of the GNU General Public License along
+ * with this program. If not, see <http://www.gnu.org/licenses/>.
+ */
+
 #include "AchievementMgr.h"
 #include "BrawlersGuild.h"
 #include "ScriptedGossip.h"
@@ -85,7 +102,7 @@ public:
 
         void Reset() override
         {
-            (true);
+           // (true);
             events.Reset();
             me->Mount(44634);
             if (BrawlersGuild* brawlerGuild = me->GetBrawlerGuild())
@@ -93,7 +110,7 @@ public:
             me->GetMotionMaster()->MovePath(11854502, true);
         }
 
-        void SetData(uint32 rank, uint32 guid) override
+        void SetData(uint32 rank, uint32 /*guid*/) override
         {
             switch (rank)
             {
@@ -196,14 +213,14 @@ public:
 
         void Reset() override
         {
-            (true);
+          ///  (true);
             events.Reset();
             if (BrawlersGuild* brawlerGuild = me->GetBrawlerGuild())
                 brawlerGuild->SetAnnouncer(me->GetGUID());
             me->GetMotionMaster()->MovePath(11854503, true);
         }
 
-        void SetData(uint32 rank, uint32 guid) override
+        void SetData(uint32 rank, uint32 /*guid*/) override
         {
             switch (rank)
             {
@@ -320,7 +337,7 @@ public:
     }
 };
 
-// 93228, 93195, 93194, 144363
+// 93228, 93195, 93194, 144363, 166805
 class brawl_invitation_item : public ItemScript
 {
 public:
