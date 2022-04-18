@@ -1,4 +1,4 @@
-# MTT - WoW Battle For Azeroth 8.3.7 v35662
+# Legends of Azeroth - WoW Battle For Azeroth 8.3.7 v35662
 
 * [Introduction](#introduction)
 * [Requirements](#requirements)
@@ -119,5 +119,5 @@ Read file [THANKS](THANKS).
 ## Links
 
 * [Wiki](https://www.trinitycore.info)
-* [MTT - WoW](http://mttwow.sytes.net/)
-* [Discord](https://discord.com/invite/QXahfUP)
+* [Telegram](https://t.me/shadowmoonwow)
+* [Discord](https://discord.gg/CjNUM2UWyw)
