@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2020 LatinCoreTeam
+ * Copyright (C) 2021 BfaCore Reforged
  *
  * This program is free software; you can redistribute it and/or modify it
  * under the terms of the GNU General Public License as published by the
@@ -28,6 +28,17 @@ class Player;
 #define BOSS_PER_RANK 4
 #define REPUTATION_PER_RANK 250
 #define MAX_BRAWLERS_REPUTATION 10000
+
+enum BrawlersDataTypes
+{
+    DATA_BOSS_RANK_ONE = 1,
+    DATA_BOSS_RANK_TWO = 2,
+    DATA_BOSS_RANK_THREE = 3,
+    DATA_BOSS_RANK_FOUR = 4,
+    DATA_BOSS_RANK_FIVE = 5,
+    DATA_BOSS_RANK_SIX = 6,
+    DATA_BOSS_RANK_SEVEN = 7
+};
 
 enum BrawlersSpells
 {
@@ -187,7 +198,7 @@ private:
     static uint32 GetBossForPlayer(Player* player);
 
     void SetBrawlState(uint32 state);
-   // void PlayFightSound(bool play, uint32 boss = 0);
+    void PlayFightSound(bool play, uint32 boss = 0);
     void SendCongratulations(Player* player);
     
     std::list<ObjectGuid> _waitList;

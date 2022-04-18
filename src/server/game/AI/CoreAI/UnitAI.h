@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2020 LatinCoreTeam
+ * Copyright (C) 2021 BfaCore Reforged
  *
  * This program is free software; you can redistribute it and/or modify it
  * under the terms of the GNU General Public License as published by the
@@ -310,6 +310,13 @@ class TC_GAME_API UnitAI
             m_EmptyWarned = false;
             m_TimedDelayedOperations.push_back(std::pair<uint32, std::function<void()>>(p_Timeout, p_Function));
         }
+
+        void AddDelayedEvent(uint32 p_Timeout, std::function<void()>&& p_Function)
+        {
+            m_EmptyWarned = false;
+            m_TimedDelayedOperations.push_back(std::pair<uint32, std::function<void()>>(p_Timeout, p_Function));
+        }
+
 
         /// Called after last delayed operation was deleted
         /// Do whatever you want

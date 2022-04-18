@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2020 LatinCoreTeam
+ * Copyright (C) 2021 BfaCore Reforged
  *
  * This program is free software; you can redistribute it and/or modify it
  * under the terms of the GNU General Public License as published by the
@@ -79,10 +79,12 @@ namespace ObjectAccessor
     TC_GAME_API Pet* GetPet(WorldObject const&, ObjectGuid const& guid);
     TC_GAME_API Player* GetPlayer(Map const*, ObjectGuid const& guid);
     TC_GAME_API Player* GetPlayer(WorldObject const&, ObjectGuid const& guid);
+    TC_GAME_API Player* GetObjectInWorld(ObjectGuid guid, Player* /*typeSpecifier*/);
     TC_GAME_API Creature* GetCreatureOrPetOrVehicle(WorldObject const&, ObjectGuid const&);
 
     // these functions return objects if found in whole world
     // ACCESS LIKE THAT IS NOT THREAD SAFE
+    TC_GAME_API Unit* FindUnit(ObjectGuid const& g);
     TC_GAME_API Player* FindPlayer(ObjectGuid const&);
     TC_GAME_API Player* FindPlayerByName(std::string const& name);
     TC_GAME_API Player* FindPlayerByLowGUID(ObjectGuid::LowType lowguid);
@@ -113,6 +115,7 @@ namespace ObjectAccessor
     void RemoveObject(Player* player);
 
     TC_GAME_API void SaveAllPlayers();
+    TC_GAME_API Creature* FindCreature(ObjectGuid const&);
 };
 
 #endif

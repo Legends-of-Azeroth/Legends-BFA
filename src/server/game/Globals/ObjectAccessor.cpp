@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2020 LatinCoreTeam
+ * Copyright (C) 2021 BfaCore Reforged
  *
  * This program is free software; you can redistribute it and/or modify it
  * under the terms of the GNU General Public License as published by the
@@ -59,7 +59,7 @@ T* HashMapHolder<T>::Find(ObjectGuid guid)
     boost::shared_lock<boost::shared_mutex> lock(*GetLock());
 
     typename MapType::iterator itr = GetContainer().find(guid);
-    return (itr != GetContainer().end()) ? itr->second : NULL;
+    return (itr != GetContainer().end()) ? itr->second : nullptr;
 }
 
 template<class T>
@@ -250,6 +250,14 @@ Player* ObjectAccessor::GetPlayer(WorldObject const& u, ObjectGuid const& guid)
     return GetPlayer(u.GetMap(), guid);
 }
 
+Player* ObjectAccessor::GetObjectInWorld(ObjectGuid guid, Player* /*typeSpecifier*/)
+{
+    Player* player = HashMapHolder<Player>::Find(guid);
+    if (player && player->IsInWorld())
+        return player;
+    return nullptr;
+}
+
 Creature* ObjectAccessor::GetCreatureOrPetOrVehicle(WorldObject const& u, ObjectGuid const& guid)
 {
     if (guid.IsPet())
@@ -258,7 +266,13 @@ Creature* ObjectAccessor::GetCreatureOrPetOrVehicle(WorldObject const& u, Object
     if (guid.IsCreatureOrVehicle())
         return GetCreature(u, guid);
 
-    return NULL;
+    return nullptr;
+}
+
+Unit* ObjectAccessor::FindUnit(ObjectGuid const& guid)
+{
+    Unit* unit = HashMapHolder<Unit>::Find(guid);
+    return unit && unit->IsInWorld() ? unit : nullptr;
 }
 
 Player* ObjectAccessor::FindPlayer(ObjectGuid const& guid)
@@ -318,4 +332,9 @@ void ObjectAccessor::RemoveObject(Player* player)
 {
     HashMapHolder<Player>::Remove(player);
     PlayerNameMapHolder::Remove(player);
+}
+
+Creature* ObjectAccessor::FindCreature(ObjectGuid const& guid)
+{
+    return HashMapHolder<Creature>::Find(guid);
 }
